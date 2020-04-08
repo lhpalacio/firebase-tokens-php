@@ -1,6 +1,6 @@
-# Migrating from from 1.x to 2.x
+# Migrating from 1.x to 2.x
 
-This guide will help you migrating from a 1.x to a 2.x version. If you are updating from a <1.9 version, consider
+This guide will help you to migrate from a 1.x to a 2.x version. If you are updating from a <1.9 version, consider
 updating to 1.9 first so that you can benefit from deprecation notices in your IDE.
 
 ## Dependencies

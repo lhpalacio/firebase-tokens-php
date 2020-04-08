@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Removed deprecated components.
 - Update dev-dependency on `symfony/cache` to address [CVE-2019-10912](https://github.com/advisories/GHSA-w2fr-65vp-mxw3)
 - The default branch of the GitHub repository has been renamed from `master` to `main` - 
   if you're using `dev-master` as a version constraint in your `composer.json`, please 
