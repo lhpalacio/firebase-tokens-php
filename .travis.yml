@@ -18,7 +18,7 @@ install:
   - composer update --no-interaction --no-suggest --no-progress
 
 script:
-  - vendor/bin/phpstan analyse src -c phpstan.neon --level=max --no-progress -vvv
+  - vendor/bin/phpstan analyse
   - vendor/bin/phpunit --coverage-clover=coverage-report.clover --log-junit=test-report.xml
   - sonar-scanner
 

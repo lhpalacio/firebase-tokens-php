@@ -1,0 +1,12 @@
+parameters:
+	level: max
+	paths:
+		- src/
+		- tests/
+	ignoreErrors:
+		- '#Access to an undefined property object#'
+	inferPrivatePropertyTypeFromConstructor: true
+	tmpDir: %currentWorkingDirectory%/build/phpstan/
+
+includes:
+    - phpstan-baseline.neon

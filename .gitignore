@@ -3,6 +3,7 @@
 
 /.php_cs.cache
 /composer.lock
+/phpstan.neon
 /phpunit.xml
 
 /tests/credentials.json
