@@ -22,7 +22,7 @@ final class CustomTokenGeneratorTest extends TestCase
     /** @var CustomTokenGenerator */
     private $generator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->handler = new class() implements Handler {
             public $action;
@@ -38,15 +38,19 @@ final class CustomTokenGeneratorTest extends TestCase
         $this->generator = new CustomTokenGenerator($this->handler);
     }
 
-    /** @test */
-    public function it_can_be_created_with_credentials()
+    /**
+     * @test
+     */
+    public function it_can_be_created_with_credentials(): void
     {
         CustomTokenGenerator::withClientEmailAndPrivateKey('email@domain.tld', 'some-private-key');
         $this->addToAssertionCount(1);
     }
 
-    /** @test */
-    public function it_delegates_a_simple_action()
+    /**
+     * @test
+     */
+    public function it_delegates_a_simple_action(): void
     {
         $this->generator->createCustomToken('uid');
         $this->assertSame('uid', $this->handler->action->uid());
@@ -54,8 +58,10 @@ final class CustomTokenGeneratorTest extends TestCase
         $this->assertTrue(Duration::fromDateIntervalSpec(CreateCustomToken::DEFAULT_TTL)->equals($this->handler->action->timeToLive()));
     }
 
-    /** @test */
-    public function it_delegates_an_action_with_custom_claims()
+    /**
+     * @test
+     */
+    public function it_delegates_an_action_with_custom_claims(): void
     {
         $customClaims = ['first' => 'first', 'true' => true, 'false' => false, 'null' => null];
         $this->generator->createCustomToken('uid', $customClaims);
@@ -63,8 +69,10 @@ final class CustomTokenGeneratorTest extends TestCase
         $this->assertEquals($customClaims, $this->handler->action->customClaims());
     }
 
-    /** @test */
-    public function it_delegates_an_action_with_a_custom_token_expiration()
+    /**
+     * @test
+     */
+    public function it_delegates_an_action_with_a_custom_token_expiration(): void
     {
         $this->generator->createCustomToken('uid', [], 1337);
 

@@ -22,7 +22,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     /** @var FetchGooglePublicKeys */
     protected $action;
 
-    public function setUp()
+    public function setUp(): void
     {
         $now = new DateTimeImmutable();
         $now = $now->setTimestamp($now->getTimestamp()); // Trim microseconds, just to be sure
@@ -31,8 +31,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->action = FetchGooglePublicKeys::fromUrl('bogus');
     }
 
-    /** @test */
-    public function it_returns_keys()
+    /**
+     * @test
+     */
+    public function it_returns_keys(): void
     {
         $this->createHandler()->handle($this->action);
         $this->addToAssertionCount(1);

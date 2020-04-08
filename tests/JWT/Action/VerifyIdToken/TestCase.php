@@ -33,7 +33,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 
     abstract protected function createHandler(): Handler;
 
-    final public function setUp()
+    final public function setUp(): void
     {
         $now = new DateTimeImmutable();
         $now = $now->setTimestamp($now->getTimestamp()); // Trim microseconds, just to be sure
@@ -44,15 +44,19 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->idToken = new IdToken($this->clock);
     }
 
-    /** @test */
-    public function it_works_when_everything_is_fine()
+    /**
+     * @test
+     */
+    public function it_works_when_everything_is_fine(): void
     {
         $this->createHandler()->handle(VerifyIdToken::withToken($this->idToken->build()));
         $this->addToAssertionCount(1);
     }
 
-    /** @test */
-    public function it_fails_with_empty_keys()
+    /**
+     * @test
+     */
+    public function it_fails_with_empty_keys(): void
     {
         $this->keys = StaticKeys::empty();
 
@@ -60,43 +64,55 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->createHandler()->handle(VerifyIdToken::withToken($this->idToken->build()));
     }
 
-    /** @test */
-    public function it_rejects_a_malformed_token()
+    /**
+     * @test
+     */
+    public function it_rejects_a_malformed_token(): void
     {
         $this->expectException(IdTokenVerificationFailed::class);
         $this->createHandler()->handle(VerifyIdToken::withToken('x'.$this->idToken->build()));
     }
 
-    /** @test */
-    public function it_rejects_an_unsigned_token()
+    /**
+     * @test
+     */
+    public function it_rejects_an_unsigned_token(): void
     {
         $this->expectException(IdTokenVerificationFailed::class);
         $this->createHandler()->handle(VerifyIdToken::withToken($this->idToken->withoutSignature()->build()));
     }
 
-    /** @test */
-    public function it_rejects_a_token_without_a_key_id()
+    /**
+     * @test
+     */
+    public function it_rejects_a_token_without_a_key_id(): void
     {
         $this->expectException(IdTokenVerificationFailed::class);
         $this->createHandler()->handle(VerifyIdToken::withToken($this->idToken->withoutHeader('kid')->build()));
     }
 
-    /** @test */
-    public function it_rejects_a_token_with_a_non_matching_key_id()
+    /**
+     * @test
+     */
+    public function it_rejects_a_token_with_a_non_matching_key_id(): void
     {
         $this->expectException(IdTokenVerificationFailed::class);
         $this->createHandler()->handle(VerifyIdToken::withToken($this->idToken->withChangedHeader('kid', 'unknown')->build()));
     }
 
-    /** @test */
-    public function it_rejects_a_token_when_the_matching_key_is_invalid()
+    /**
+     * @test
+     */
+    public function it_rejects_a_token_when_the_matching_key_is_invalid(): void
     {
         $this->expectException(IdTokenVerificationFailed::class);
         $this->createHandler()->handle(VerifyIdToken::withToken($this->idToken->withChangedHeader('kid', 'invalid')->build()));
     }
 
-    /** @test */
-    public function it_rejects_an_expired_token()
+    /**
+     * @test
+     */
+    public function it_rejects_an_expired_token(): void
     {
         $idToken = $this->idToken
             ->withChangedClaim('exp', $this->clock->now()->getTimestamp() - 1)
@@ -106,8 +122,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->createHandler()->handle(VerifyIdToken::withToken($idToken));
     }
 
-    /** @test */
-    public function it_accepts_an_expired_token_with_leeway()
+    /**
+     * @test
+     */
+    public function it_accepts_an_expired_token_with_leeway(): void
     {
         $idToken = $this->idToken
             ->withChangedClaim('exp', $this->clock->now()->getTimestamp() - 1)
@@ -119,8 +137,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->addToAssertionCount(1);
     }
 
-    /** @test */
-    public function it_rejects_a_token_that_was_issued_in_the_future()
+    /**
+     * @test
+     */
+    public function it_rejects_a_token_that_was_issued_in_the_future(): void
     {
         $idToken = $this->idToken
             ->withChangedClaim('iat', $this->clock->now()->getTimestamp() + 10)
@@ -130,8 +150,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->createHandler()->handle(VerifyIdToken::withToken($idToken));
     }
 
-    /** @test */
-    public function it_rejects_a_token_that_is_to_be_used_in_the_future()
+    /**
+     * @test
+     */
+    public function it_rejects_a_token_that_is_to_be_used_in_the_future(): void
     {
         $idToken = $this->idToken
             ->withChangedClaim('nbf', $this->clock->now()->getTimestamp() + 1)
@@ -141,8 +163,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->createHandler()->handle(VerifyIdToken::withToken($idToken));
     }
 
-    /** @test */
-    public function it_rejects_a_token_with_a_future_auth_time()
+    /**
+     * @test
+     */
+    public function it_rejects_a_token_with_a_future_auth_time(): void
     {
         $idToken = $this->idToken
             ->withChangedClaim('auth_time', $this->clock->now()->getTimestamp() + 1)
@@ -152,8 +176,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->createHandler()->handle(VerifyIdToken::withToken($idToken));
     }
 
-    /** @test */
-    public function it_rejects_a_token_with_the_wrong_audience()
+    /**
+     * @test
+     */
+    public function it_rejects_a_token_with_the_wrong_audience(): void
     {
         $idToken = $this->idToken->withChangedClaim('aud', 'wrong-project-id')->build();
 
@@ -161,8 +187,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->createHandler()->handle(VerifyIdToken::withToken($idToken));
     }
 
-    /** @test */
-    public function it_rejects_a_token_with_the_wrong_issuer()
+    /**
+     * @test
+     */
+    public function it_rejects_a_token_with_the_wrong_issuer(): void
     {
         $idToken = $this->idToken->withChangedClaim('iss', 'wrong')->build();
 
@@ -170,8 +198,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->createHandler()->handle(VerifyIdToken::withToken($idToken));
     }
 
-    /** @test */
-    public function it_rejects_a_token_without_a_subject()
+    /**
+     * @test
+     */
+    public function it_rejects_a_token_without_a_subject(): void
     {
         $idToken = $this->idToken->withoutClaim('sub')->build();
 

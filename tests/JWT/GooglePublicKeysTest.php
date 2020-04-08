@@ -29,7 +29,7 @@ final class GooglePublicKeysTest extends TestCase
     /** @var StaticKeys */
     private $staticResult;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $now = new DateTimeImmutable();
         $now = $now->setTimestamp($now->getTimestamp()); // Trim microseconds, just to be sure
@@ -43,8 +43,10 @@ final class GooglePublicKeysTest extends TestCase
         $this->keys = new GooglePublicKeys($this->handler, $this->clock);
     }
 
-    /** @test */
-    public function it_fetches_keys_only_the_first_time()
+    /**
+     * @test
+     */
+    public function it_fetches_keys_only_the_first_time(): void
     {
         $this->handler->expects($this->once())->method('handle')->willReturn($this->expiringResult);
 
@@ -52,8 +54,10 @@ final class GooglePublicKeysTest extends TestCase
         $this->assertSame($this->expiringResult->all(), $this->keys->all());
     }
 
-    /** @test */
-    public function it_re_fetches_keys_when_they_are_expired()
+    /**
+     * @test
+     */
+    public function it_re_fetches_keys_when_they_are_expired(): void
     {
         $this->handler->expects($this->exactly(2))->method('handle')->willReturn($this->expiringResult);
 
@@ -62,8 +66,10 @@ final class GooglePublicKeysTest extends TestCase
         $this->keys->all();
     }
 
-    /** @test */
-    public function it_uses_non_expiring_keys_forever()
+    /**
+     * @test
+     */
+    public function it_uses_non_expiring_keys_forever(): void
     {
         $this->handler->expects($this->once())->method('handle')->willReturn($this->staticResult);
 

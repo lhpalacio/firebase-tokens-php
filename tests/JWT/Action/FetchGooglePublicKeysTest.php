@@ -14,8 +14,10 @@ use PHPUnit\Framework\TestCase;
  */
 final class FetchGooglePublicKeysTest extends TestCase
 {
-    /** @test */
-    public function its_url_points_to_google()
+    /**
+     * @test
+     */
+    public function its_url_points_to_google(): void
     {
         $this->assertSame(
             'https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com',
@@ -23,8 +25,10 @@ final class FetchGooglePublicKeysTest extends TestCase
         );
     }
 
-    /** @test */
-    public function its_url_can_be_changed()
+    /**
+     * @test
+     */
+    public function its_url_can_be_changed(): void
     {
         $this->assertSame(
             'https://domain.tld',
@@ -32,8 +36,10 @@ final class FetchGooglePublicKeysTest extends TestCase
         );
     }
 
-    /** @test */
-    public function it_has_a_fallback_cache_duration_of_one_hour()
+    /**
+     * @test
+     */
+    public function it_has_a_fallback_cache_duration_of_one_hour(): void
     {
         $now = new DateTimeImmutable();
 
@@ -41,8 +47,10 @@ final class FetchGooglePublicKeysTest extends TestCase
         $this->assertTrue(Duration::make('PT1H')->equals($fallbackCacheDuration));
     }
 
-    /** @test */
-    public function its_fallback_cache_duration_can_be_changed()
+    /**
+     * @test
+     */
+    public function its_fallback_cache_duration_can_be_changed(): void
     {
         $duration = 'PT13H37M';
         $action = FetchGooglePublicKeys::fromGoogle()->ifKeysDoNotExpireCacheFor($duration);

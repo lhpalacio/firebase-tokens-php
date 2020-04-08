@@ -31,11 +31,6 @@ parameters:
 			path: src/JWT/Action/FetchGooglePublicKeys.php
 
 		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Action\\\\VerifyIdToken\\\\WithFirebaseJWT\\:\\:restoreJWTStaticVariables\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/JWT/Action/VerifyIdToken/WithFirebaseJWT.php
-
-		-
 			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Action\\\\VerifyIdToken\\\\WithFirebaseJWT\\:\\:restoreJWTStaticVariables\\(\\) has parameter \\$leeway with no typehint specified\\.$#"
 			count: 1
 			path: src/JWT/Action/VerifyIdToken/WithFirebaseJWT.php
@@ -201,99 +196,9 @@ parameters:
 			path: src/JWT/Value/Duration.php
 
 		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\CreateCustomToken\\\\TestCase\\:\\:setUp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/CreateCustomToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\CreateCustomToken\\\\TestCase\\:\\:it_creates_a_fully_customized_custom_token\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/CreateCustomToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\CreateCustomToken\\\\TestCase\\:\\:it_creates_a_custom_token_with_a_default_expiration_time_of_one_hour\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/CreateCustomToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\CreateCustomToken\\\\TestCase\\:\\:it_does_not_add_custom_claims_when_none_are_given\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/CreateCustomToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\CreateCustomToken\\\\TestCase\\:\\:it_fails_with_an_invalid_private_key\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/CreateCustomToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\CreateCustomToken\\\\TestCase\\:\\:it_is_stringable\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/CreateCustomToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\CreateCustomTokenTest\\:\\:it_rejects_an_invalid_expiration_time_in_seconds\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/CreateCustomTokenTest.php
-
-		-
 			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\CreateCustomTokenTest\\:\\:invalidExpirationTimesInSeconds\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/JWT/Action/CreateCustomTokenTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\CreateCustomTokenTest\\:\\:the_uid_can_be_changed\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/CreateCustomTokenTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\CreateCustomTokenTest\\:\\:a_claim_can_be_set\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/CreateCustomTokenTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\CreateCustomTokenTest\\:\\:custom_claims_can_be_added\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/CreateCustomTokenTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\TestCase\\:\\:setUp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\TestCase\\:\\:it_returns_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithGuzzle6Test\\:\\:setUp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithGuzzle6Test.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithGuzzle6Test\\:\\:it_returns_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithGuzzle6Test.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithGuzzle6Test\\:\\:it_returns_expiring_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithGuzzle6Test.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithGuzzle6Test\\:\\:it_returns_a_set_of_static_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithGuzzle6Test.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithGuzzle6Test\\:\\:it_handles_non_success_responses\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithGuzzle6Test.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithGuzzle6Test\\:\\:it_handles_connect_exceptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithGuzzle6Test.php
 
 		-
 			message: "#^Property Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr16SimpleCacheTest\\:\\:\\$cache has no typehint specified\\.$#"
@@ -302,41 +207,6 @@ parameters:
 
 		-
 			message: "#^Property Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr16SimpleCacheTest\\:\\:\\$inner has no typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr16SimpleCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr16SimpleCacheTest\\:\\:setUp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr16SimpleCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr16SimpleCacheTest\\:\\:it_caches_fresh_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr16SimpleCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr16SimpleCacheTest\\:\\:it_returns_cached_non_expired_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr16SimpleCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr16SimpleCacheTest\\:\\:it_returns_cached_non_expiring_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr16SimpleCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr16SimpleCacheTest\\:\\:it_refreshes_expired_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr16SimpleCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr16SimpleCacheTest\\:\\:it_handles_invalid_cache_contents\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr16SimpleCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr16SimpleCacheTest\\:\\:it_catches_errors_caused_by_the_inner_handler\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr16SimpleCacheTest.php
 
@@ -356,187 +226,7 @@ parameters:
 			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr6CacheTest.php
 
 		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr6CacheTest\\:\\:setUp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr6CacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr6CacheTest\\:\\:it_caches_fresh_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr6CacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr6CacheTest\\:\\:it_returns_cached_non_expired_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr6CacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr6CacheTest\\:\\:it_returns_cached_non_expiring_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr6CacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr6CacheTest\\:\\:it_refreshes_expired_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr6CacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr6CacheTest\\:\\:it_handles_invalid_cache_contents\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr6CacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeys\\\\WithPsr6CacheTest\\:\\:it_catches_errors_caused_by_the_inner_handler\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeys/WithPsr6CacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeysTest\\:\\:its_url_points_to_google\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeysTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeysTest\\:\\:its_url_can_be_changed\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeysTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeysTest\\:\\:it_has_a_fallback_cache_duration_of_one_hour\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeysTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\FetchGooglePublicKeysTest\\:\\:its_fallback_cache_duration_can_be_changed\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/FetchGooglePublicKeysTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:setUp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_works_when_everything_is_fine\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_fails_with_empty_keys\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_a_malformed_token\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_an_unsigned_token\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_a_token_without_a_key_id\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_a_token_with_a_non_matching_key_id\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_a_token_when_the_matching_key_is_invalid\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_an_expired_token\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_accepts_an_expired_token_with_leeway\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_a_token_that_was_issued_in_the_future\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_a_token_that_is_to_be_used_in_the_future\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_a_token_with_a_future_auth_time\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_a_token_with_the_wrong_audience\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_a_token_with_the_wrong_issuer\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdToken\\\\TestCase\\:\\:it_rejects_a_token_without_a_subject\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdToken/TestCase.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Action\\\\VerifyIdTokenTest\\:\\:it_rejects_a_negative_leeway\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Action/VerifyIdTokenTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Cache\\\\InMemoryCacheTest\\:\\:setUp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Cache/InMemoryCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Cache\\\\InMemoryCacheTest\\:\\:it_sets_gets_and_deletes\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Cache/InMemoryCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Cache\\\\InMemoryCacheTest\\:\\:it_returns_the_default_if_an_item_is_expired\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Cache/InMemoryCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Cache\\\\InMemoryCacheTest\\:\\:it_deletes_keys_when_no_ttl_is_given\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Cache/InMemoryCacheTest.php
-
-		-
 			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Cache\\\\InMemoryCacheTest\\:\\:nullValues\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: tests/JWT/Cache/InMemoryCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Cache\\\\InMemoryCacheTest\\:\\:it_can_be_cleared\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Cache/InMemoryCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Cache\\\\InMemoryCacheTest\\:\\:it_returns_multiple_items\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Cache/InMemoryCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Cache\\\\InMemoryCacheTest\\:\\:it_can_set_multiple_items\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Cache/InMemoryCacheTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Cache\\\\InMemoryCacheTest\\:\\:it_can_delete_multiple_items\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: tests/JWT/Cache/InMemoryCacheTest.php
 
@@ -546,32 +236,7 @@ parameters:
 			path: tests/JWT/CustomTokenGeneratorTest.php
 
 		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\CustomTokenGeneratorTest\\:\\:setUp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/CustomTokenGeneratorTest.php
-
-		-
 			message: "#^Property class@anonymous/tests/JWT/CustomTokenGeneratorTest\\.php\\:27\\:\\:\\$action has no typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/CustomTokenGeneratorTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\CustomTokenGeneratorTest\\:\\:it_can_be_created_with_credentials\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/CustomTokenGeneratorTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\CustomTokenGeneratorTest\\:\\:it_delegates_a_simple_action\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/CustomTokenGeneratorTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\CustomTokenGeneratorTest\\:\\:it_delegates_an_action_with_custom_claims\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/CustomTokenGeneratorTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\CustomTokenGeneratorTest\\:\\:it_delegates_an_action_with_a_custom_token_expiration\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: tests/JWT/CustomTokenGeneratorTest.php
 
@@ -581,62 +246,12 @@ parameters:
 			path: tests/JWT/GooglePublicKeysTest.php
 
 		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\GooglePublicKeysTest\\:\\:setUp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/GooglePublicKeysTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\GooglePublicKeysTest\\:\\:it_fetches_keys_only_the_first_time\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/GooglePublicKeysTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\GooglePublicKeysTest\\:\\:it_re_fetches_keys_when_they_are_expired\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/GooglePublicKeysTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\GooglePublicKeysTest\\:\\:it_uses_non_expiring_keys_forever\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/GooglePublicKeysTest.php
-
-		-
 			message: "#^Property Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\IdTokenVerifierTest\\:\\:\\$handler has no typehint specified\\.$#"
 			count: 1
 			path: tests/JWT/IdTokenVerifierTest.php
 
 		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\IdTokenVerifierTest\\:\\:setUp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/IdTokenVerifierTest.php
-
-		-
 			message: "#^Property class@anonymous/tests/JWT/IdTokenVerifierTest\\.php\\:29\\:\\:\\$action has no typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/IdTokenVerifierTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\IdTokenVerifierTest\\:\\:it_can_be_created_with_a_project_id\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/IdTokenVerifierTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\IdTokenVerifierTest\\:\\:it_can_be_created_with_a_project_id_and_custom_cache\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/IdTokenVerifierTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\IdTokenVerifierTest\\:\\:it_rejects_an_unsupported_kind_of_custom_cache\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/IdTokenVerifierTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\IdTokenVerifierTest\\:\\:it_verifies_a_token\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/IdTokenVerifierTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\IdTokenVerifierTest\\:\\:it_verifies_a_token_with_leeway\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: tests/JWT/IdTokenVerifierTest.php
 
@@ -686,16 +301,6 @@ parameters:
 			path: tests/JWT/Util/IdToken.php
 
 		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Value\\\\DurationTest\\:\\:it_can_be_none\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Value/DurationTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Value\\\\DurationTest\\:\\:it_parses_a_value\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Value/DurationTest.php
-
-		-
 			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Value\\\\DurationTest\\:\\:it_parses_a_value\\(\\) has parameter \\$expectedSpec with no typehint specified\\.$#"
 			count: 1
 			path: tests/JWT/Value/DurationTest.php
@@ -711,32 +316,12 @@ parameters:
 			path: tests/JWT/Value/DurationTest.php
 
 		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Value\\\\DurationTest\\:\\:it_rejects_invalid_values\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Value/DurationTest.php
-
-		-
 			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Value\\\\DurationTest\\:\\:it_rejects_invalid_values\\(\\) has parameter \\$value with no typehint specified\\.$#"
 			count: 1
 			path: tests/JWT/Value/DurationTest.php
 
 		-
 			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Value\\\\DurationTest\\:\\:invalidValues\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: tests/JWT/Value/DurationTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Value\\\\DurationTest\\:\\:it_optimizes_the_date_interval_spec\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Value/DurationTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Value\\\\DurationTest\\:\\:it_can_be_compared\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: tests/JWT/Value/DurationTest.php
-
-		-
-			message: "#^Method Kreait\\\\Firebase\\\\JWT\\\\Tests\\\\Value\\\\DurationTest\\:\\:it_can_be_casted_to_a_date_interval_spec_string\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: tests/JWT/Value/DurationTest.php
 

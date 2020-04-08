@@ -6,13 +6,18 @@ $finder = PhpCsFixer\Finder::create()
 
 return PhpCsFixer\Config::create()
     ->setUsingCache(true)
+    ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
         'header_comment' => ['header' => ''],
         'phpdoc_align' => false,
         'phpdoc_order' => true,
         'ordered_imports' => true,
+        'phpdoc_line_span' => [
+            'property' => 'single',
+        ],
         'array_syntax' => ['syntax' => 'short'],
+        'void_return' => true,
         'yoda_style' => false,
     ])
     ->setFinder($finder);

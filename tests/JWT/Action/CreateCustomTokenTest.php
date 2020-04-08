@@ -17,7 +17,7 @@ final class CreateCustomTokenTest extends TestCase
      * @test
      * @dataProvider invalidExpirationTimesInSeconds
      */
-    public function it_rejects_an_invalid_expiration_time_in_seconds(int $seconds)
+    public function it_rejects_an_invalid_expiration_time_in_seconds(int $seconds): void
     {
         $this->expectException(InvalidArgumentException::class);
         CreateCustomToken::forUid('uid')->withTimeToLive($seconds);
@@ -31,16 +31,20 @@ final class CreateCustomTokenTest extends TestCase
         ];
     }
 
-    /** @test */
-    public function the_uid_can_be_changed()
+    /**
+     * @test
+     */
+    public function the_uid_can_be_changed(): void
     {
         $action = CreateCustomToken::forUid('old')->withChangedUid('new');
 
         $this->assertSame('new', $action->uid());
     }
 
-    /** @test */
-    public function a_claim_can_be_set()
+    /**
+     * @test
+     */
+    public function a_claim_can_be_set(): void
     {
         $action = CreateCustomToken::forUid('uid')
             ->withCustomClaims(['a' => 'b', 'c' => 'd'])
@@ -50,8 +54,10 @@ final class CreateCustomTokenTest extends TestCase
         $this->assertEquals(['a' => 'b', 'c' => 'x', 'e' => 'f'], $action->customClaims());
     }
 
-    /** @test */
-    public function custom_claims_can_be_added()
+    /**
+     * @test
+     */
+    public function custom_claims_can_be_added(): void
     {
         $action = CreateCustomToken::forUid('uid')
             ->withCustomClaims(['a' => 'b'])

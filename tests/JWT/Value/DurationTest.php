@@ -12,8 +12,10 @@ use PHPUnit\Framework\TestCase;
 
 class DurationTest extends TestCase
 {
-    /** @test */
-    public function it_can_be_none()
+    /**
+     * @test
+     */
+    public function it_can_be_none(): void
     {
         $now = new DateTimeImmutable();
         $this->assertEquals($now, $now->add(Duration::none()->value()));
@@ -23,7 +25,7 @@ class DurationTest extends TestCase
      * @test
      * @dataProvider validValues
      */
-    public function it_parses_a_value($value, $expectedSpec)
+    public function it_parses_a_value($value, $expectedSpec): void
     {
         $this->assertSame($expectedSpec, (string) Duration::make($value));
     }
@@ -42,7 +44,7 @@ class DurationTest extends TestCase
      * @test
      * @dataProvider invalidValues
      */
-    public function it_rejects_invalid_values($value)
+    public function it_rejects_invalid_values($value): void
     {
         $this->expectException(InvalidArgumentException::class);
         Duration::make($value);
@@ -63,14 +65,18 @@ class DurationTest extends TestCase
         ];
     }
 
-    /** @test */
-    public function it_optimizes_the_date_interval_spec()
+    /**
+     * @test
+     */
+    public function it_optimizes_the_date_interval_spec(): void
     {
         $this->assertSame('P1DT1H', (string) Duration::make('PT24H60M'));
     }
 
-    /** @test */
-    public function it_can_be_compared()
+    /**
+     * @test
+     */
+    public function it_can_be_compared(): void
     {
         $given = Duration::make('60 minutes');
         $equal = Duration::make('1 hour');
@@ -81,8 +87,10 @@ class DurationTest extends TestCase
         $this->assertTrue($given->isSmallerThan($larger));
     }
 
-    /** @test */
-    public function it_can_be_casted_to_a_date_interval_spec_string()
+    /**
+     * @test
+     */
+    public function it_can_be_casted_to_a_date_interval_spec_string(): void
     {
         $this->assertSame('PT1H', (string) Duration::make('1 hour'));
     }

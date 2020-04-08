@@ -25,7 +25,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     /** @var Handler */
     private $handler;
 
-    public function setUp()
+    public function setUp(): void
     {
         $now = new DateTimeImmutable();
         $now = $now->setTimestamp($now->getTimestamp()); // Trim microseconds, just to be sure
@@ -34,8 +34,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->handler = static::createHandler();
     }
 
-    /** @test */
-    public function it_creates_a_fully_customized_custom_token()
+    /**
+     * @test
+     */
+    public function it_creates_a_fully_customized_custom_token(): void
     {
         $action = CreateCustomToken::forUid($uid = 'uid')
             ->withCustomClaims($claims = ['first_claim' => 'first_value', 'second_claim' => 'second_value'])
@@ -55,8 +57,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->assertEquals($claims, (array) $payload['claims']);
     }
 
-    /** @test */
-    public function it_creates_a_custom_token_with_a_default_expiration_time_of_one_hour()
+    /**
+     * @test
+     */
+    public function it_creates_a_custom_token_with_a_default_expiration_time_of_one_hour(): void
     {
         $payload = $this->handler->handle(CreateCustomToken::forUid('uid'))->payload();
 
@@ -64,16 +68,20 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->assertSame(self::$clock->now()->modify('+1 hour')->getTimestamp(), $payload['exp']);
     }
 
-    /** @test */
-    public function it_does_not_add_custom_claims_when_none_are_given()
+    /**
+     * @test
+     */
+    public function it_does_not_add_custom_claims_when_none_are_given(): void
     {
         $payload = $this->handler->handle(CreateCustomToken::forUid('uid'))->payload();
 
         $this->assertArrayNotHasKey('claims', $payload);
     }
 
-    /** @test */
-    public function it_fails_with_an_invalid_private_key()
+    /**
+     * @test
+     */
+    public function it_fails_with_an_invalid_private_key(): void
     {
         $handler = static::createHandlerWithInvalidPrivateKey();
 
@@ -81,8 +89,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $handler->handle(CreateCustomToken::forUid('uid'));
     }
 
-    /** @test */
-    public function it_is_stringable()
+    /**
+     * @test
+     */
+    public function it_is_stringable(): void
     {
         $token = $this->handler->handle(CreateCustomToken::forUid('uid'));
 
