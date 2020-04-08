@@ -93,7 +93,7 @@ final class WithGuzzle6Test extends TestCase
         $this->mockHandler->append($error);
 
         $this->expectException(FetchingGooglePublicKeysFailed::class);
-        $this->expectExceptionMessageRegExp('/something went wrong/');
+        $this->expectExceptionMessageMatches('/something went wrong/');
         $this->createHandler()->handle($this->action);
     }
 }
