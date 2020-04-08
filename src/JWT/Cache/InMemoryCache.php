@@ -8,10 +8,12 @@ use DateInterval;
 use Kreait\Clock;
 use Kreait\Clock\SystemClock;
 use Psr\SimpleCache\CacheInterface;
+use Psr\SimpleCache\InvalidArgumentException;
+use Throwable;
 
 final class InMemoryCache implements CacheInterface
 {
-    /** @var array */
+    /** @var array<string, mixed> */
     private $items = [];
 
     /** @var Clock */
@@ -40,7 +42,7 @@ final class InMemoryCache implements CacheInterface
         $now = $this->clock->now();
 
         if ($item = $this->items[$key] ?? null) {
-            list($expiresAt, $value) = $item;
+            [$expiresAt, $value] = $item;
 
             if (!$expiresAt || $expiresAt > $now) {
                 return $value;
@@ -52,6 +54,13 @@ final class InMemoryCache implements CacheInterface
         return $default;
     }
 
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @param int|DateInterval|null $ttl
+     *
+     * @throws InvalidArgumentException&Throwable
+     */
     public function set($key, $value, $ttl = null): bool
     {
         $now = $this->clock->now();
@@ -90,6 +99,14 @@ final class InMemoryCache implements CacheInterface
         return true;
     }
 
+    /**
+     * @param iterable<string> $keys
+     * @param mixed $default
+     *
+     * @throws InvalidArgumentException&Throwable
+     *
+     * @return iterable<string, mixed>
+     */
     public function getMultiple($keys, $default = null)
     {
         $result = [];
@@ -101,6 +118,12 @@ final class InMemoryCache implements CacheInterface
         return $result;
     }
 
+    /**
+     * @param iterable<string, mixed> $values
+     * @param int|DateInterval|null $ttl
+     *
+     * @throws InvalidArgumentException&Throwable
+     */
     public function setMultiple($values, $ttl = null): bool
     {
         foreach ($values as $key => $value) {
@@ -110,6 +133,11 @@ final class InMemoryCache implements CacheInterface
         return true;
     }
 
+    /**
+     * @param iterable<string> $keys
+     *
+     * @throws InvalidArgumentException&Throwable
+     */
     public function deleteMultiple($keys): bool
     {
         foreach ($keys as $key) {

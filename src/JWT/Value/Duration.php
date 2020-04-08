@@ -16,7 +16,7 @@ use Throwable;
  */
 final class Duration
 {
-    const NONE = 'PT0S';
+    private const NONE = 'PT0S';
 
     /** @var DateInterval */
     private $value;
@@ -25,6 +25,11 @@ final class Duration
     {
     }
 
+    /**
+     * @param self|DateInterval|int|string|mixed $value
+     *
+     * @throws InvalidArgumentException
+     */
     public static function make($value): self
     {
         if ($value instanceof self) {
@@ -47,6 +52,10 @@ final class Duration
             try {
                 $interval = DateInterval::createFromDateString($value);
             } catch (Throwable $e) {
+                $interval = null;
+            }
+
+            if (!($interval instanceof DateInterval)) {
                 throw new InvalidArgumentException("Unable to determine a duration from the value '{$value}'");
             }
 
@@ -82,6 +91,9 @@ final class Duration
         return self::fromDateInterval($interval);
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public static function fromDateInterval(DateInterval $interval): self
     {
         $now = new DateTimeImmutable();
@@ -107,21 +119,41 @@ final class Duration
         return $this->value;
     }
 
+    /**
+     * @param self|DateInterval|int|string|mixed $other
+     *
+     * @throws InvalidArgumentException
+     */
     public function isLargerThan($other): bool
     {
         return 1 === $this->compareTo($other);
     }
 
+    /**
+     * @param self|DateInterval|int|string|mixed $other
+     *
+     * @throws InvalidArgumentException
+     */
     public function equals($other): bool
     {
         return 0 === $this->compareTo($other);
     }
 
+    /**
+     * @param self|DateInterval|int|string|mixed $other
+     *
+     * @throws InvalidArgumentException
+     */
     public function isSmallerThan($other): bool
     {
         return -1 === $this->compareTo($other);
     }
 
+    /**
+     * @param self|DateInterval|int|string|mixed $other
+     *
+     * @throws InvalidArgumentException
+     */
     public function compareTo($other): int
     {
         $other = self::make($other);
@@ -143,6 +175,7 @@ final class Duration
 
     private static function now(): DateTimeImmutable
     {
+        /* @noinspection PhpUnhandledExceptionInspection */
         return new DateTimeImmutable('@'.time());
     }
 

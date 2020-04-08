@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Kreait\Firebase\JWT\Tests;
 
 use InvalidArgumentException;
-use Kreait\Firebase\JWT\Action\VerifyIdToken;
 use Kreait\Firebase\JWT\Action\VerifyIdToken\Handler;
 use Kreait\Firebase\JWT\Contract\Token;
 use Kreait\Firebase\JWT\IdTokenVerifier;
-use Kreait\Firebase\JWT\Token as TokenInstance;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Cache\CacheItemPoolInterface;
 use stdClass;
@@ -19,6 +18,7 @@ use stdClass;
  */
 final class IdTokenVerifierTest extends TestCase
 {
+    /** @var Handler|MockObject */
     private $handler;
 
     /** @var IdTokenVerifier */
@@ -26,16 +26,7 @@ final class IdTokenVerifierTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->handler = new class() implements Handler {
-            public $action;
-
-            public function handle(VerifyIdToken $action): Token
-            {
-                $this->action = $action;
-
-                return TokenInstance::withValues('', [], []);
-            }
-        };
+        $this->handler = $this->createMock(Handler::class);
 
         $this->verifier = new IdTokenVerifier($this->handler);
     }
@@ -72,9 +63,9 @@ final class IdTokenVerifierTest extends TestCase
      */
     public function it_verifies_a_token(): void
     {
-        $this->verifier->verifyIdToken('token');
-        $this->assertSame('token', $this->handler->action->token());
-        $this->assertSame(0, $this->handler->action->leewayInSeconds());
+        $this->handler->method('handle')->willReturn($token = $this->createMock(Token::class));
+
+        $this->assertSame($token, $this->verifier->verifyIdToken('token'));
     }
 
     /**
@@ -82,8 +73,8 @@ final class IdTokenVerifierTest extends TestCase
      */
     public function it_verifies_a_token_with_leeway(): void
     {
-        $this->verifier->verifyIdTokenWithLeeway('token', 1337);
-        $this->assertSame('token', $this->handler->action->token());
-        $this->assertSame(1337, $this->handler->action->leewayInSeconds());
+        $this->handler->method('handle')->willReturn($token = $this->createMock(Token::class));
+
+        $this->assertSame($token, $this->verifier->verifyIdTokenWithLeeway('token', 1337));
     }
 }

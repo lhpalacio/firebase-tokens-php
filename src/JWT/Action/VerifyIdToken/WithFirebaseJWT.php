@@ -97,14 +97,14 @@ final class WithFirebaseJWT implements Handler
 
         // We replicate what's done in JWT::decode(), but have to re-encode/decode it
         // to get an array instead of an object
-        list($headb64, $bodyb64) = explode('.', $tokenString);
+        [$headb64, $bodyb64] = explode('.', $tokenString);
         $headers = (array) JWT::jsonDecode(JWT::urlsafeB64Decode($headb64));
         $payload = (array) JWT::jsonDecode(JWT::urlsafeB64Decode($bodyb64));
 
         return TokenInstance::withValues($tokenString, $headers, $payload);
     }
 
-    private function restoreJWTStaticVariables($timestamp, $leeway): void
+    private function restoreJWTStaticVariables(?int $timestamp, int $leeway): void
     {
         JWT::$timestamp = $timestamp;
         JWT::$leeway = $leeway;

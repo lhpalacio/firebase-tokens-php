@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Kreait\Firebase\JWT\Tests\Action;
 
-use DateTimeImmutable;
 use Kreait\Firebase\JWT\Action\FetchGooglePublicKeys;
 use Kreait\Firebase\JWT\Value\Duration;
 use PHPUnit\Framework\TestCase;
@@ -41,8 +40,6 @@ final class FetchGooglePublicKeysTest extends TestCase
      */
     public function it_has_a_fallback_cache_duration_of_one_hour(): void
     {
-        $now = new DateTimeImmutable();
-
         $fallbackCacheDuration = FetchGooglePublicKeys::fromGoogle()->getFallbackCacheDuration();
         $this->assertTrue(Duration::make('PT1H')->equals($fallbackCacheDuration));
     }

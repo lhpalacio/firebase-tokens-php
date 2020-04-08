@@ -20,6 +20,9 @@ final class ExpiringKeys implements Keys, Expirable
         $this->expirationTime = new DateTimeImmutable('0001-01-01'); // Very distant past :)
     }
 
+    /**
+     * @param array<string, string> $values
+     */
     public static function withValuesAndExpirationTime(array $values, DateTimeImmutable $expirationTime): self
     {
         $keys = new self();

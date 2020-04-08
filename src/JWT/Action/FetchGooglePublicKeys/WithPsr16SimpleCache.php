@@ -62,6 +62,7 @@ final class WithPsr16SimpleCache implements Handler
             ? $keys->expiresAt()->getTimestamp() - $now->getTimestamp()
             : $action->getFallbackCacheDuration()->value();
 
+        /* @noinspection PhpUnhandledExceptionInspection */
         $this->cache->set($cacheKey, $keys, $ttl);
 
         return $keys;

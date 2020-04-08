@@ -29,6 +29,9 @@ final class IdTokenVerifier
         return self::createWithProjectIdAndCache($projectId, InMemoryCache::createEmpty());
     }
 
+    /**
+     * @param CacheInterface|CacheItemPoolInterface|mixed $cache
+     */
     public static function createWithProjectIdAndCache(string $projectId, $cache): self
     {
         $clock = new SystemClock();

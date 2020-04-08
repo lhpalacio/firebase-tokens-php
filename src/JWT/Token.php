@@ -9,16 +9,20 @@ final class Token implements Contract\Token
     /** @var string */
     private $encodedString;
 
-    /** @var array */
+    /** @var array<string, string> */
     private $headers;
 
-    /** @var array */
+    /** @var array<string, mixed> */
     private $payload;
 
     private function __construct()
     {
     }
 
+    /**
+     * @param array<string, string> $headers
+     * @param array<string, mixed> $payload
+     */
     public static function withValues(string $encodedString, array $headers, array $payload): self
     {
         $token = new self();

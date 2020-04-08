@@ -7,14 +7,16 @@ namespace Kreait\Firebase\JWT\Tests;
 use DateInterval;
 use DateTimeImmutable;
 use Kreait\Clock\FrozenClock;
-use Kreait\Firebase\JWT\Action\FetchGooglePublicKeys;
+use Kreait\Firebase\JWT\Action\FetchGooglePublicKeys\Handler;
 use Kreait\Firebase\JWT\GooglePublicKeys;
 use Kreait\Firebase\JWT\Keys\ExpiringKeys;
 use Kreait\Firebase\JWT\Keys\StaticKeys;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 final class GooglePublicKeysTest extends TestCase
 {
+    /** @var Handler|MockObject */
     private $handler;
 
     /** @var FrozenClock */
@@ -35,7 +37,7 @@ final class GooglePublicKeysTest extends TestCase
         $now = $now->setTimestamp($now->getTimestamp()); // Trim microseconds, just to be sure
 
         $this->clock = new FrozenClock($now);
-        $this->handler = $this->createMock(FetchGooglePublicKeys\Handler::class);
+        $this->handler = $this->createMock(Handler::class);
 
         $this->expiringResult = ExpiringKeys::withValuesAndExpirationTime(['ir' => 'relevant'], $this->clock->now()->modify('+1 hour'));
         $this->staticResult = StaticKeys::withValues(['ir' => 'relevant']);

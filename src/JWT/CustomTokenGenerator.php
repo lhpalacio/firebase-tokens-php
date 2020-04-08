@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace Kreait\Firebase\JWT;
 
+use DateInterval;
+use InvalidArgumentException;
 use Kreait\Clock\SystemClock;
 use Kreait\Firebase\JWT\Action\CreateCustomToken;
 use Kreait\Firebase\JWT\Action\CreateCustomToken\Handler;
 use Kreait\Firebase\JWT\Action\CreateCustomToken\WithHandlerDiscovery;
 use Kreait\Firebase\JWT\Contract\Token;
 use Kreait\Firebase\JWT\Error\CustomTokenCreationFailed;
+use Kreait\Firebase\JWT\Value\Duration;
 
 final class CustomTokenGenerator
 {
@@ -34,6 +37,10 @@ final class CustomTokenGenerator
     }
 
     /**
+     * @param array<string, mixed> $claims
+     * @param Duration|DateInterval|string|int|mixed $timeToLive
+     *
+     * @throws InvalidArgumentException
      * @throws CustomTokenCreationFailed
      */
     public function createCustomToken(string $uid, array $claims = null, $timeToLive = null): Token

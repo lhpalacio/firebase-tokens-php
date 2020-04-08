@@ -10,14 +10,14 @@ use Kreait\Firebase\JWT\Value\Duration;
 
 final class CreateCustomToken
 {
-    const MINIMUM_TTL = 'PT1S';
-    const MAXIMUM_TTL = 'PT1H';
-    const DEFAULT_TTL = self::MAXIMUM_TTL;
+    private const MINIMUM_TTL = 'PT1S';
+    private const MAXIMUM_TTL = 'PT1H';
+    private const DEFAULT_TTL = self::MAXIMUM_TTL;
 
     /** @var string */
     private $uid;
 
-    /** @var array */
+    /** @var array<string, mixed> */
     private $customClaims = [];
 
     /** @var Duration */
@@ -44,6 +44,9 @@ final class CreateCustomToken
         return $action;
     }
 
+    /**
+     * @param mixed $value
+     */
     public function withCustomClaim(string $name, $value): self
     {
         $action = clone $this;
@@ -52,6 +55,9 @@ final class CreateCustomToken
         return $action;
     }
 
+    /**
+     * @param array<string, mixed> $claims
+     */
     public function withCustomClaims(array $claims): self
     {
         $action = clone $this;
@@ -60,6 +66,9 @@ final class CreateCustomToken
         return $action;
     }
 
+    /**
+     * @param array<string, mixed> $claims
+     */
     public function withAddedCustomClaims(array $claims): self
     {
         $action = clone $this;
@@ -69,7 +78,9 @@ final class CreateCustomToken
     }
 
     /**
-     * @param Duration|DateInterval|string|int $ttl
+     * @param self|DateInterval|int|string|mixed $ttl
+     *
+     * @throws InvalidArgumentException
      */
     public function withTimeToLive($ttl): self
     {
@@ -94,6 +105,9 @@ final class CreateCustomToken
         return $this->uid;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function customClaims(): array
     {
         return $this->customClaims;

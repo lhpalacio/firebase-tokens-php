@@ -15,7 +15,7 @@ trait ExpirableTrait
     /**
      * @return static
      */
-    public function withExpirationTime(DateTimeImmutable $expirationTime)
+    public function withExpirationTime(DateTimeImmutable $expirationTime): Expirable
     {
         $expirable = clone $this;
         $expirable->expirationTime = $expirationTime;

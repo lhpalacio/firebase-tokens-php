@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Kreait\Firebase\JWT\Tests;
 
-use Kreait\Firebase\JWT\Action\CreateCustomToken;
 use Kreait\Firebase\JWT\Action\CreateCustomToken\Handler;
 use Kreait\Firebase\JWT\Contract\Token;
 use Kreait\Firebase\JWT\CustomTokenGenerator;
-use Kreait\Firebase\JWT\Token as TokenInstance;
-use Kreait\Firebase\JWT\Value\Duration;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,6 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class CustomTokenGeneratorTest extends TestCase
 {
+    /** @var Handler|MockObject */
     private $handler;
 
     /** @var CustomTokenGenerator */
@@ -24,16 +23,7 @@ final class CustomTokenGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->handler = new class() implements Handler {
-            public $action;
-
-            public function handle(CreateCustomToken $action): Token
-            {
-                $this->action = $action;
-
-                return TokenInstance::withValues('', [], []);
-            }
-        };
+        $this->handler = $this->createMock(Handler::class);
 
         $this->generator = new CustomTokenGenerator($this->handler);
     }
@@ -50,32 +40,30 @@ final class CustomTokenGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function it_delegates_a_simple_action(): void
+    public function it_creates_a_custom_token_for_an_uid_only(): void
     {
-        $this->generator->createCustomToken('uid');
-        $this->assertSame('uid', $this->handler->action->uid());
-        $this->assertEmpty($this->handler->action->customClaims());
-        $this->assertTrue(Duration::fromDateIntervalSpec(CreateCustomToken::DEFAULT_TTL)->equals($this->handler->action->timeToLive()));
+        $this->handler->method('handle')->willReturn($token = $this->createMock(Token::class));
+
+        $this->assertSame($token, $this->generator->createCustomToken('uid'));
     }
 
     /**
      * @test
      */
-    public function it_delegates_an_action_with_custom_claims(): void
+    public function it_creates_a_custom_token_for_an_uid_with_custom_claims(): void
     {
-        $customClaims = ['first' => 'first', 'true' => true, 'false' => false, 'null' => null];
-        $this->generator->createCustomToken('uid', $customClaims);
+        $this->handler->method('handle')->willReturn($token = $this->createMock(Token::class));
 
-        $this->assertEquals($customClaims, $this->handler->action->customClaims());
+        $this->assertSame($token, $this->generator->createCustomToken('uid', ['custom' => 'claim']));
     }
 
     /**
      * @test
      */
-    public function it_delegates_an_action_with_a_custom_token_expiration(): void
+    public function it_creates_a_custom_token_with_a_custom_ttl(): void
     {
-        $this->generator->createCustomToken('uid', [], 1337);
+        $this->handler->method('handle')->willReturn($token = $this->createMock(Token::class));
 
-        $this->assertTrue(Duration::inSeconds(1337)->equals($this->handler->action->timeToLive()));
+        $this->assertSame($token, $this->generator->createCustomToken('uid', [], 1337));
     }
 }

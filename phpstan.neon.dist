@@ -5,8 +5,14 @@ parameters:
 		- tests/
 	ignoreErrors:
 		- '#Access to an undefined property object#'
+		-
+			message: '#Method .+ has parameter .+ with no typehint specified#'
+			path: tests
+		-
+			message: '#Method .+ return type has no value type specified in iterable#'
+			path: tests
+		-
+			message: '#Method .+ has parameter .+ with no value type specified in iterable type array#'
+			path: tests
 	inferPrivatePropertyTypeFromConstructor: true
 	tmpDir: %currentWorkingDirectory%/build/phpstan/
-
-includes:
-    - phpstan-baseline.neon

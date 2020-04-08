@@ -16,16 +16,16 @@ final class IdToken
     /** @var Clock */
     private $clock;
 
-    /** @var array */
+    /** @var array<string, string> */
     private $headers = ['typ' => 'JWT', 'alg' => 'RS256', 'kid' => 'kid'];
 
-    /** @var array */
+    /** @var array<string, mixed> */
     private $payload;
 
-    /** @var array */
+    /** @var array<string> */
     private $claimsToDelete = [];
 
-    /** @var array */
+    /** @var array<string> */
     private $headersToDelete = [];
 
     /** @var string|null */
@@ -90,8 +90,8 @@ final class IdToken
 
         $payload = $this->payload;
         $payload['iat'] = $payload['iat'] ?? $now->getTimestamp();
-        $payload['auth_time'] = $payload['auth_time'] ?? $now->getTimestamp() - 1;
-        $payload['exp'] = $payload['exp'] ?? $now->getTimestamp() + 3600; // 1 hour
+        $payload['auth_time'] = $payload['auth_time'] ?? ($now->getTimestamp() - 1);
+        $payload['exp'] = $payload['exp'] ?? ($now->getTimestamp() + 3600); // 1 hour
         $payload['nbf'] = $payload['nbf'] ?? $now->getTimestamp();
 
         foreach ($this->claimsToDelete as $claim) {

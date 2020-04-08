@@ -8,6 +8,9 @@ use RuntimeException;
 
 final class IdTokenVerificationFailed extends RuntimeException
 {
+    /**
+     * @param array<string> $reasons
+     */
     public static function withTokenAndReasons(string $token, array $reasons): self
     {
         if (strlen($token) > 18) {
